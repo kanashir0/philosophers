@@ -6,11 +6,11 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:50:36 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/25 21:21:19 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:00:39 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 static inline bool	is_space(char c)
 {

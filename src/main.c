@@ -6,11 +6,11 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:42:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/25 21:19:23 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:01:28 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../include/philo.h"
 
 int	main(int argc, char **argv)
 {
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 	if (argc == 5 || argc == 6)
 	{
 		parse_input(&table, argv);
-		// data_init(&table);
+		// init_data(&table);
 		// dinner_start(&table);
 		// clean_all(&table);
 	}

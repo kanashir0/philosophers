@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:27:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/25 21:14:37 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/27 20:36:42 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@
 #include <pthread.h>
 #include <sys/time.h>
 #include <limits.h>
+#include <errno.h>
+
+typedef enum e_opcode
+{
+	LOCK,
+	UNLOCK,
+	INIT,
+	DESTROY,
+	CREATE,
+	JOIN,
+	DETACH
+}	t_opcode;
 
 typedef pthread_mutex_t t_mtx;
 
@@ -61,5 +73,11 @@ void	error_exit(const char *msg);
 
 // Parser
 void	parse_input(t_table *table, char **argv);
+
+// Wrappers
+void	*ft_malloc(size_t bytes);
+void	mutex_handler(t_mtx *mutex, t_opcode opcode);
+void	thread_handler(pthread_t *thread, void *(*func)(void *),
+		void *data, t_opcode opcode);
 
 #endif

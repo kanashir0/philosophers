@@ -11,7 +11,7 @@ INC_DIR = -I include/
 OBJ_DIR = objs/
 SRC_DIR = src/
 
-SRC =	$(addprefix $(SRC_DIR), main.c parse.c utils.c)
+SRC =	$(addprefix $(SRC_DIR), main.c parse.c utils.c init.c wrappers.c)
 
 OBJS = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 
