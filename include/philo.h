@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:27:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 13:11:36 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:22:25 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <sys/time.h>
 # include <limits.h>
 # include <errno.h>
+
+# define DEBUG_MODE 1
 
 typedef enum e_opcode
 {
@@ -69,6 +71,7 @@ typedef struct s_philo
 	t_fork		*first_fork;
 	t_fork		*second_fork;
 	pthread_t	thread_id;
+	t_mtx		philo_mutex;
 	t_table		*table;
 }				t_philo;
 
@@ -87,6 +90,10 @@ struct s_table
 	t_fork	*forks;
 	t_philo	*philos;
 };
+
+// Init
+void	init_data(t_table *table);
+void	dinner_start(t_table *table);
 
 // Utils
 void	error_exit(const char *msg);
@@ -111,5 +118,8 @@ bool	is_simulation_finished(t_table *table);
 
 // Sync
 void	wait_threads(t_table *table);
+
+// Write
+void	write_status(t_philo_status status, t_philo *philo, bool debug);
 
 #endif

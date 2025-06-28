@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:59:47 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 12:23:00 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/28 17:31:54 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ static void	philo_init(t_table *table)
 	t_philo	*philo;
 
 	i = 0;
-	while (i++ < table->philo_nbr)
+	while (i < table->philo_nbr)
 	{
 		philo = table->philos + i;
 		philo->id = i + 1;
 		philo->is_full = false;
 		philo->meals_count = 0;
 		philo->table = table;
+		mutex_handler(&philo->philo_mutex, INIT);
 		assign_forks(philo, table->forks, i);
+		i++;
 	}
 }
 
@@ -54,11 +56,11 @@ void	init_data(t_table *table)
 	table->philos = ft_malloc(sizeof(t_philo) * table->philo_nbr);
 	table->forks = ft_malloc(sizeof(t_fork) * table->philo_nbr);
 	mutex_handler(&table->table_mutex, INIT);
-	while (i++ < table->philo_nbr)
+	while (i < table->philo_nbr)
 	{
 		mutex_handler(&table->forks[i].fork, INIT);
 		table->forks[i].fork_id = i;
+		i++;
 	}
 	philo_init(table);
-
 }

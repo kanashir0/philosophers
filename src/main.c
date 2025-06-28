@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:42:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/27 20:01:28 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/28 15:31:20 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	main(int argc, char **argv)
 	if (argc == 5 || argc == 6)
 	{
 		parse_input(&table, argv);
-		// init_data(&table);
-		// dinner_start(&table);
+		init_data(&table);
+		dinner_start(&table);
 		// clean_all(&table);
 	}
 	else
