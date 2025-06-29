@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sync.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:35:52 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 12:38:38 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/29 14:18:58 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,4 +16,37 @@ void	wait_threads(t_table *table)
 {
 	while (!get_bool(&table->table_mutex, &table->threads_ready))
 		;
+}
+
+bool	threads_running(t_mtx *mutex, long *threads, long philo_nbr)
+{
+	bool	res;
+
+	res = false;
+	mutex_handler(mutex, LOCK);
+	if (*threads == philo_nbr)
+		res = true;
+	mutex_handler(mutex, UNLOCK);
+	return (res);
+}
+
+void	increase_long(t_mtx *mutex, long *value)
+{
+	mutex_handler(mutex, LOCK);
+	(*value)++;
+	mutex_handler(mutex, UNLOCK);
+}
+
+void	unsync_philos(t_philo *philo)
+{
+	if(philo->table->philo_nbr % 2 == 0)
+	{
+		if (philo->id % 2 == 0)
+			precise_usleep(3e4, philo->table);
+	}
+	else
+	{
+		if (philo->id % 2)
+			thinking(philo, true);
+	}
 }

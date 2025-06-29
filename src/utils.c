@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:43:56 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 13:08:14 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/29 14:23:55 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,21 @@ void	precise_usleep(long usec, t_table *table)
 				;
 		}
 	}
+}
+
+void	clean_all(t_table *table)
+{
+	t_philo	*philo;
+	int		i;
+
+	i = -1;
+	while (++i < table->philo_nbr)
+	{
+		philo = table->philos + i;
+		mutex_handler(&philo->philo_mutex, DESTROY);
+	}
+	mutex_handler(&table->write_mutex, DESTROY);
+	mutex_handler(&table->table_mutex, DESTROY);
+	free(table->forks);
+	free(table->philos);
 }

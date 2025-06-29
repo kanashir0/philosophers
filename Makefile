@@ -19,7 +19,8 @@ SRC =	$(addprefix $(SRC_DIR), main.c \
 								dinner.c \
 								getters_setters.c \
 								sync.c \
-								write.c)
+								write.c \
+								monitor.c)
 
 OBJS = $(SRC:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
 

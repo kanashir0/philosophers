@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:42:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 15:31:20 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/29 14:23:29 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 		parse_input(&table, argv);
 		init_data(&table);
 		dinner_start(&table);
-		// clean_all(&table);
+		clean_all(&table);
 	}
 	else
 	{

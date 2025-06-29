@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:59:47 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 17:31:54 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/06/29 14:25:28 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	assign_forks(t_philo *philo, t_fork *forks, int position)
 	philo_nbr = philo->table->philo_nbr;
 	philo->first_fork = &forks[(position + 1) % philo_nbr];
 	philo->second_fork = &forks[position];
-	if (philo->id % 2)
+	if (philo->id % 2 == 0)
 	{
 		philo->first_fork = &forks[position];
 		philo->second_fork = &forks[(position + 1) % philo_nbr];
@@ -32,8 +32,8 @@ static void	philo_init(t_table *table)
 	int		i;
 	t_philo	*philo;
 
-	i = 0;
-	while (i < table->philo_nbr)
+	i = -1;
+	while (++i < table->philo_nbr)
 	{
 		philo = table->philos + i;
 		philo->id = i + 1;
@@ -42,7 +42,6 @@ static void	philo_init(t_table *table)
 		philo->table = table;
 		mutex_handler(&philo->philo_mutex, INIT);
 		assign_forks(philo, table->forks, i);
-		i++;
 	}
 }
 
@@ -50,17 +49,18 @@ void	init_data(t_table *table)
 {
 	int	i;
 
-	i = 0;
+	i = -1;
 	table->end_simulation = false;
 	table->threads_ready = false;
+	table->threads_running_nbr = 0;
 	table->philos = ft_malloc(sizeof(t_philo) * table->philo_nbr);
 	table->forks = ft_malloc(sizeof(t_fork) * table->philo_nbr);
 	mutex_handler(&table->table_mutex, INIT);
-	while (i < table->philo_nbr)
+	mutex_handler(&table->write_mutex, INIT);
+	while (++i < table->philo_nbr)
 	{
 		mutex_handler(&table->forks[i].fork, INIT);
 		table->forks[i].fork_id = i;
-		i++;
 	}
 	philo_init(table);
 }
