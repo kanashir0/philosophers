@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   write.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 13:07:14 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/28 15:27:25 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:01:24 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	write_status_debug(t_philo_status status, t_philo *philo, long elapsed)
 	else if (status == TAKE_SECOND_FORK
 		&& !is_simulation_finished(philo->table))
 		printf("%-6ld %d has taken the 2nd fork"
-			"\t\t\tn: %d\n", elapsed, philo->id, philo->first_fork->fork_id);
+			"\t\t\tn: %d\n", elapsed, philo->id, philo->second_fork->fork_id);
 	else if (status == EATING && !is_simulation_finished(philo->table))
 		printf("%-6ld %d is eating"
 			"\t\t\t %ld\n", elapsed, philo->id, philo->meals_count);

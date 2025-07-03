@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:13:47 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/29 14:19:21 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/02 20:45:55 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	thinking(t_philo *philo, bool pre_simulation)
 		return ;
 	t_eat = philo->table->time_to_eat;
 	t_sleep = philo->table->time_to_sleep;
-	t_think = t_eat * 2 - t_sleep;
+	t_think = (t_eat * 2) - t_sleep;
 	if (t_think < 0)
 		t_think = 0;
 	precise_usleep(t_think * 0.42, philo->table);

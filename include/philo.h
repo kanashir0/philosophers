@@ -6,7 +6,7 @@
 /*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:27:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/29 14:24:01 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/02 21:03:05 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # include <limits.h>
 # include <errno.h>
 
-# define DEBUG_MODE 1
+# define DEBUG_MODE 0
 
 typedef enum e_opcode
 {
