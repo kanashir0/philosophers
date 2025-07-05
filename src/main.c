@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:42:20 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/29 14:23:29 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:58:27 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int	main(int argc, char **argv)
 	else
 	{
 		error_exit("Wrong input:\n"
-				"Correct is ./philo 5 800 200 200 [5]");
+			"Correct is ./philo 5 800 200 200 [5]");
 	}
 }

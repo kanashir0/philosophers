@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 19:59:47 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/29 14:25:28 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:58:11 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ static void	assign_forks(t_philo *philo, t_fork *forks, int position)
 		philo->first_fork = &forks[position];
 		philo->second_fork = &forks[(position + 1) % philo_nbr];
 	}
-
 }
 
 static void	philo_init(t_table *table)

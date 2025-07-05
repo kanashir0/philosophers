@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wrappers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/27 20:02:22 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/27 20:39:36 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/05 15:01:43 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,23 @@ void	*ft_malloc(size_t bytes)
 	return (ptr);
 }
 
-static void mutex_error_handler(int status, t_opcode opcode)
+static void	mutex_error_handler(int status, t_opcode opcode)
 {
 	if (status == 0)
 		return ;
-	if (status == EINVAL && (opcode == LOCK 
-		|| opcode == UNLOCK || opcode == DESTROY))
+	if (status == EINVAL && (opcode == LOCK
+			|| opcode == UNLOCK || opcode == DESTROY))
 		error_exit("The value specified by mutex is invalid.\n");
 	else if (status == EINVAL && opcode == INIT)
 		error_exit("The value specified by attr is invalid.\n");
 	else if (status == EDEADLK)
-		error_exit("A deadlock would occur if the thread blocked waiting for mutex.\n");
+		error_exit("A deadlock would occur if the thread"
+			"blocked waiting for mutex.\n");
 	else if (status == EPERM)
 		error_exit("The current thread does not hold a lock on mutex.\n");
 	else if (status == ENOMEM)
-		error_exit("The process cannot allocate enough memory to create another mutex.\n");
+		error_exit("The process cannot allocate enough"
+			"memory to create another mutex.\n");
 	else if (status == EBUSY)
 		error_exit("Mutex is locked.\n");
 }
@@ -55,7 +57,7 @@ void	mutex_handler(t_mtx *mutex, t_opcode opcode)
 		error_exit("Wrong opcode for mutex!\n");
 }
 
-static void thread_error_handler(int status, t_opcode opcode)
+static void	thread_error_handler(int status, t_opcode opcode)
 {
 	if (status == 0)
 		return ;
@@ -69,10 +71,10 @@ static void thread_error_handler(int status, t_opcode opcode)
 		error_exit("The value specified by thread is not joinable.\n");
 	else if (status == ESRCH)
 		error_exit("No thread could be found corresponding to that "
-		"specified by the given thread ID, thread.\n");
+			"specified by the given thread ID, thread.\n");
 	else if (status == EDEADLK)
 		error_exit("A deadlock was detected or the value of"
-		"thread specifies the callind thread.");
+			"thread specifies the callind thread.");
 }
 
 void	thread_handler(pthread_t *thread, void *(*func)(void *),

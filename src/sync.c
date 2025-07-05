@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sync.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:35:52 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/29 14:18:58 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/05 14:57:44 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	increase_long(t_mtx *mutex, long *value)
 
 void	unsync_philos(t_philo *philo)
 {
-	if(philo->table->philo_nbr % 2 == 0)
+	if (philo->table->philo_nbr % 2 == 0)
 	{
 		if (philo->id % 2 == 0)
 			precise_usleep(3e4, philo->table);

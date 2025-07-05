@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dinner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/28 12:13:47 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/07/02 20:45:55 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/05 15:02:25 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ void	*lone_philo(void *arg)
 
 	philo = (t_philo *)arg;
 	wait_threads(philo->table);
-	set_long(&philo->philo_mutex, &philo->last_meal_time, ft_gettime(MILLISECOND));
-	increase_long(&philo->table->table_mutex, &philo->table->threads_running_nbr);
+	set_long(&philo->philo_mutex, &philo->last_meal_time,
+		ft_gettime(MILLISECOND));
+	increase_long(&philo->table->table_mutex,
+		&philo->table->threads_running_nbr);
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	while (!is_simulation_finished(philo->table))
 		usleep(200);
@@ -68,8 +70,10 @@ void	*dinner_simulation(void *data)
 
 	philo = (t_philo *)data;
 	wait_threads(philo->table);
-	set_long(&philo->philo_mutex, &philo->last_meal_time, ft_gettime(MILLISECOND));
-	increase_long(&philo->table->table_mutex, &philo->table->threads_running_nbr);
+	set_long(&philo->philo_mutex, &philo->last_meal_time,
+		ft_gettime(MILLISECOND));
+	increase_long(&philo->table->table_mutex,
+		&philo->table->threads_running_nbr);
 	unsync_philos(philo);
 	while (!is_simulation_finished(philo->table))
 	{
@@ -91,7 +95,8 @@ void	dinner_start(t_table *table)
 	if (table->nbr_limit_meals == 0)
 		return ;
 	else if (table->philo_nbr == 1)
-		thread_handler(&table->philos[0].thread_id, lone_philo, &table->philos[0], CREATE);
+		thread_handler(&table->philos[0].thread_id,
+			lone_philo, &table->philos[0], CREATE);
 	else
 	{
 		while (++i < table->philo_nbr)

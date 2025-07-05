@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gyasuhir <gyasuhir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: gyasuhir <gyasuhir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 20:50:36 by gyasuhir          #+#    #+#             */
-/*   Updated: 2025/06/27 20:00:39 by gyasuhir         ###   ########.fr       */
+/*   Updated: 2025/07/05 15:00:36 by gyasuhir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static char	*validate_input(char *str)
 	if (*str == '+')
 		str++;
 	else if (*str == '-')
-		error_exit("Invalid negative number input. Use only positive integers!\n");
+		error_exit("Invalid negative number input."
+			"Use only positive integers!\n");
 	if (!is_digit(*str))
 		error_exit("Input is not a digit.\n");
 	nbr = str;
@@ -51,7 +52,7 @@ static long	ft_atol(char *str)
 	num = 0;
 	str = validate_input(str);
 	while (is_digit(*str))
-		num = (num *10) + (*str++ - '0');
+		num = (num * 10) + (*str++ - '0');
 	if (num > INT_MAX)
 		error_exit("Input is too big. Use only positive integers!");
 	return (num);
